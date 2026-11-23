@@ -118,6 +118,13 @@ struct ReclamationConfiguration: MAATaskConfiguration {
         modes[mode] ?? ""
     }
 
+    func resolvingKoreanCraftTools() throws -> Self {
+        guard toolsToCraftEnabled, KoreanInputResources.isKoreanServer else { return self }
+        var result = self
+        result.tools_to_craft = try tools_to_craft.map(KoreanShopNames.current.craftTool)
+        return result
+    }
+
     var projectedTask: MAATask {
         .reclamation(self)
     }

@@ -171,6 +171,10 @@ extension NewViewModel {
             }
         }
 
+        if type == .Copilot, config.formation, config.support_unit_usage == .specific {
+            try await parent.waitForInputResources()
+            try config.resolveSupportOperator()
+        }
         guard let params = try? config.jsonString() else {
             return
         }

@@ -23,6 +23,8 @@
 		831D2489293C9CE3005AC1CE /* MaaCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831D2488293C9CE3005AC1CE /* MaaCore.xcframework */; };
 		831D248A293C9CE3005AC1CE /* MaaCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 831D2488293C9CE3005AC1CE /* MaaCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8320E6642CFE004D00F4BC95 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8320E6632CFE004D00F4BC95 /* Localizable.xcstrings */; };
+		F41E5E2D721E47D494C6CC88 /* RoguelikeOptions.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 19AF74AF549A4B95AD0F4A09 /* RoguelikeOptions.xcstrings */; };
+		44BFCDF2A81252D1AF1CF37C /* KoreanInputs.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D011C569CEAE53A1A2EC5B6D /* KoreanInputs.xcstrings */; };
 		83264A2629EBC9C10074E33A /* ReclamationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A2529EBC9C10074E33A /* ReclamationSettingsView.swift */; };
 		83264A2929EBEBB00074E33A /* MAATaskConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A2829EBEBB00074E33A /* MAATaskConfiguration.swift */; };
 		83264A2B29EBED780074E33A /* StartupConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A2A29EBED780074E33A /* StartupConfiguration.swift */; };
@@ -34,6 +36,8 @@
 		83264A3B29EC0F2E0074E33A /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A3A29EC0F2E0074E33A /* LogView.swift */; };
 		83264A3E29EC22DE0074E33A /* MAAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A3D29EC22DE0074E33A /* MAAViewModel.swift */; };
 		83264ACB29EC0F2E0074E33A /* EditableTextList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264ACA29EC0F2E0074E33A /* EditableTextList.swift */; };
+		0E30FDE754235373B2C9244F /* KoreanOperatorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D36BE872CD50BE93157B47 /* KoreanOperatorField.swift */; };
+		698C48B948955AF0A8FA670B /* KoreanSamiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FDCF738F7952FFAF3D78EB /* KoreanSamiTextField.swift */; };
 		832903A9302C9802008E1DC6 /* URL+contentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832903A8302C9802008E1DC6 /* URL+contentType.swift */; };
 		8329858A29ED121A009F7ED5 /* CopilotDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329858929ED121A009F7ED5 /* CopilotDetail.swift */; };
 		8329858C29EDA952009F7ED5 /* OpenLogFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329858B29EDA8DB009F7ED5 /* OpenLogFileView.swift */; };
@@ -82,6 +86,13 @@
 		8366DE0129F2F26100F715E8 /* OperBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366DE0029F2F26100F715E8 /* OperBoxView.swift */; };
 		8366DE0329F2F34100F715E8 /* MAAOperBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366DE0229F2F34100F715E8 /* MAAOperBox.swift */; };
 		836E9975305338150082748D /* FightStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E9974305338150082748D /* FightStage.swift */; };
+		E151744A288755679AFDCCE5 /* FightDropItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BCA94D9516503BB6049C2D /* FightDropItems.swift */; };
+		F80856243251596E9F2C5B61 /* KoreanInputResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACD3B2A7E95B1FABA04947 /* KoreanInputResources.swift */; };
+		DB5B7DB5A863508D9B82FDB2 /* InputDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635C5DA08725C409D747819 /* InputDraft.swift */; };
+		A11CD557D59F5C2C8F50F857 /* KoreanOperatorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F47D5FE2115908A53B8A93 /* KoreanOperatorNames.swift */; };
+		9C9F23D47728563D9CA99904 /* KoreanOCRTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B197894FD2566E843DCEAD /* KoreanOCRTasks.swift */; };
+		E744C86377C45899893ED061 /* KoreanSamiNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AEB15B945B5720A2973C0C /* KoreanSamiNames.swift */; };
+		12644DD0D8D951C7B5A3D2F9 /* KoreanShopNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B607A5E9E2D5A35B64280D7 /* KoreanShopNames.swift */; };
 		836E997730534A200082748D /* StageActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E997630534A200082748D /* StageActivity.swift */; };
 		83782A2B2CFFAF2900A32BDD /* LegacyConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83782A2A2CFFAF2900A32BDD /* LegacyConfigurations.swift */; };
 		83782A2D2CFFB00000A32BDD /* LegacyUserTasks in Frameworks */ = {isa = PBXBuildFile; productRef = 83782A2C2CFFB00000A32BDD /* LegacyUserTasks */; };
@@ -168,6 +179,8 @@
 		83191C8E3040AF0D00576DC0 /* TCPConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPConnection.swift; sourceTree = "<group>"; };
 		831D2488293C9CE3005AC1CE /* MaaCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MaaCore.xcframework; path = ../../build/MaaCore.xcframework; sourceTree = "<group>"; };
 		8320E6632CFE004D00F4BC95 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		19AF74AF549A4B95AD0F4A09 /* RoguelikeOptions.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = RoguelikeOptions.xcstrings; sourceTree = "<group>"; };
+		D011C569CEAE53A1A2EC5B6D /* KoreanInputs.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = KoreanInputs.xcstrings; sourceTree = "<group>"; };
 		83264A2529EBC9C10074E33A /* ReclamationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReclamationSettingsView.swift; sourceTree = "<group>"; };
 		83264A2829EBEBB00074E33A /* MAATaskConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAATaskConfiguration.swift; sourceTree = "<group>"; };
 		83264A2A29EBED780074E33A /* StartupConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupConfiguration.swift; sourceTree = "<group>"; };
@@ -179,6 +192,8 @@
 		83264A3A29EC0F2E0074E33A /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		83264A3D29EC22DE0074E33A /* MAAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAAViewModel.swift; sourceTree = "<group>"; };
 		83264ACA29EC0F2E0074E33A /* EditableTextList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextList.swift; sourceTree = "<group>"; };
+		A6D36BE872CD50BE93157B47 /* KoreanOperatorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanOperatorField.swift; sourceTree = "<group>"; };
+		37FDCF738F7952FFAF3D78EB /* KoreanSamiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanSamiTextField.swift; sourceTree = "<group>"; };
 		832903A8302C9802008E1DC6 /* URL+contentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+contentType.swift"; sourceTree = "<group>"; };
 		8329858929ED121A009F7ED5 /* CopilotDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopilotDetail.swift; sourceTree = "<group>"; };
 		8329858B29EDA8DB009F7ED5 /* OpenLogFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLogFileView.swift; sourceTree = "<group>"; };
@@ -227,6 +242,13 @@
 		8366DE0229F2F34100F715E8 /* MAAOperBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAAOperBox.swift; sourceTree = "<group>"; };
 		8368855029BD851F00C5B999 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		836E9974305338150082748D /* FightStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightStage.swift; sourceTree = "<group>"; };
+		E6BCA94D9516503BB6049C2D /* FightDropItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightDropItems.swift; sourceTree = "<group>"; };
+		4CACD3B2A7E95B1FABA04947 /* KoreanInputResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInputResources.swift; sourceTree = "<group>"; };
+		5635C5DA08725C409D747819 /* InputDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDraft.swift; sourceTree = "<group>"; };
+		F2F47D5FE2115908A53B8A93 /* KoreanOperatorNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanOperatorNames.swift; sourceTree = "<group>"; };
+		C5B197894FD2566E843DCEAD /* KoreanOCRTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanOCRTasks.swift; sourceTree = "<group>"; };
+		58AEB15B945B5720A2973C0C /* KoreanSamiNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanSamiNames.swift; sourceTree = "<group>"; };
+		7B607A5E9E2D5A35B64280D7 /* KoreanShopNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanShopNames.swift; sourceTree = "<group>"; };
 		836E997630534A200082748D /* StageActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageActivity.swift; sourceTree = "<group>"; };
 		83782A282CFFA43200A32BDD /* LegacyUserTasks */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LegacyUserTasks; sourceTree = "<group>"; };
 		83782A2A2CFFAF2900A32BDD /* LegacyConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyConfigurations.swift; sourceTree = "<group>"; };
@@ -353,6 +375,8 @@
 			children = (
 				83264A3A29EC0F2E0074E33A /* LogView.swift */,
 				83264ACA29EC0F2E0074E33A /* EditableTextList.swift */,
+				A6D36BE872CD50BE93157B47 /* KoreanOperatorField.swift */,
+				37FDCF738F7952FFAF3D78EB /* KoreanSamiTextField.swift */,
 				9BC2EEB22E3F188D0039C4DB /* MiniGameView.swift */,
 				83BC250C302F02B000080642 /* PixelPaintView.swift */,
 				83477CB329FEA7A500A5FF99 /* TaskButtons.swift */,
@@ -490,6 +514,13 @@
 				831100C33026440D00554899 /* NewViewModel.swift */,
 				836E997630534A200082748D /* StageActivity.swift */,
 				836E9974305338150082748D /* FightStage.swift */,
+				E6BCA94D9516503BB6049C2D /* FightDropItems.swift */,
+				4CACD3B2A7E95B1FABA04947 /* KoreanInputResources.swift */,
+				5635C5DA08725C409D747819 /* InputDraft.swift */,
+				F2F47D5FE2115908A53B8A93 /* KoreanOperatorNames.swift */,
+				C5B197894FD2566E843DCEAD /* KoreanOCRTasks.swift */,
+				58AEB15B945B5720A2973C0C /* KoreanSamiNames.swift */,
+				7B607A5E9E2D5A35B64280D7 /* KoreanShopNames.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -498,6 +529,8 @@
 			isa = PBXGroup;
 			children = (
 				8320E6632CFE004D00F4BC95 /* Localizable.xcstrings */,
+				19AF74AF549A4B95AD0F4A09 /* RoguelikeOptions.xcstrings */,
+				D011C569CEAE53A1A2EC5B6D /* KoreanInputs.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -618,6 +651,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8320E6642CFE004D00F4BC95 /* Localizable.xcstrings in Resources */,
+				F41E5E2D721E47D494C6CC88 /* RoguelikeOptions.xcstrings in Resources */,
+				44BFCDF2A81252D1AF1CF37C /* KoreanInputs.xcstrings in Resources */,
 				83FF5A9C2978FE27000AE831 /* resource in Resources */,
 				833786D628F188D900D39D6F /* Preview Assets.xcassets in Resources */,
 				833786D328F188D900D39D6F /* Assets.xcassets in Resources */,
@@ -637,6 +672,8 @@
 				832985AA29EE9958009F7ED5 /* RecruitView.swift in Sources */,
 				83264A3B29EC0F2E0074E33A /* LogView.swift in Sources */,
 				83264ACB29EC0F2E0074E33A /* EditableTextList.swift in Sources */,
+				0E30FDE754235373B2C9244F /* KoreanOperatorField.swift in Sources */,
+				698C48B948955AF0A8FA670B /* KoreanSamiTextField.swift in Sources */,
 				83191C8D3040552100576DC0 /* MaaToolsView.swift in Sources */,
 				83812ED22D5B0B8100CB39D6 /* Binding+semicolonString.swift in Sources */,
 				8341195329EC25A900044F45 /* MAALog.swift in Sources */,
@@ -694,6 +731,13 @@
 				83E9ED972DF693B20069CFE9 /* OTAFetcher.swift in Sources */,
 				83264A2629EBC9C10074E33A /* ReclamationSettingsView.swift in Sources */,
 				836E9975305338150082748D /* FightStage.swift in Sources */,
+				E151744A288755679AFDCCE5 /* FightDropItems.swift in Sources */,
+				F80856243251596E9F2C5B61 /* KoreanInputResources.swift in Sources */,
+				DB5B7DB5A863508D9B82FDB2 /* InputDraft.swift in Sources */,
+				A11CD557D59F5C2C8F50F857 /* KoreanOperatorNames.swift in Sources */,
+				9C9F23D47728563D9CA99904 /* KoreanOCRTasks.swift in Sources */,
+				E744C86377C45899893ED061 /* KoreanSamiNames.swift in Sources */,
+				12644DD0D8D951C7B5A3D2F9 /* KoreanShopNames.swift in Sources */,
 				832985B629EF1890009F7ED5 /* MAADepot.swift in Sources */,
 				83D3283928F3048E00018D10 /* RoguelikeSettingsView.swift in Sources */,
 				92EB82872A0CD315006DD9D2 /* SystemSettingsView.swift in Sources */,

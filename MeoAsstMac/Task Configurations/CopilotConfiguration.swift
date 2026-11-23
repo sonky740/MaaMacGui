@@ -51,6 +51,14 @@ struct CopilotConfiguration: Codable, Hashable {
 
     var support_unit_usage = SupportUnitUsage.none
     var support_unit_name = ""
+    @InputDraft var supportOperatorDraft: String?
+
+    mutating func resolveSupportOperator() throws {
+        guard formation, support_unit_usage == .specific else { return }
+        support_unit_name = try KoreanOperatorNames.current.coreName(
+            supportOperatorDraft ?? support_unit_name, koreanUI: KoreanInputResources.isKoreanUI)
+        supportOperatorDraft = nil
+    }
 }
 
 extension CopilotConfiguration.SupportUnitUsage: Identifiable {

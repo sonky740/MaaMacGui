@@ -11,6 +11,15 @@ struct MallSettingsView: View {
     @Environment(\.defaultMinListRowHeight) private var rowHeight
 
     @Binding var config: MallConfiguration
+    @State private var names: KoreanShopNames?
+
+    private func refreshNames() {
+        names = KoreanInputResources.isKoreanUI && KoreanInputResources.isKoreanServer ? KoreanShopNames.current : nil
+    }
+
+    private func display(_ term: String) -> String {
+        names?.displayedKeyword(term) ?? term
+    }
 
     var body: some View {
         VStack(spacing: 30) {
@@ -39,12 +48,14 @@ struct MallSettingsView: View {
             }
 
             HStack(spacing: 20) {
-                EditableTextList(title: "优先购买", texts: $config.buy_first)
-                EditableTextList(title: "黑名单", texts: $config.blacklist)
+                EditableTextList(title: "优先购买", texts: $config.buy_first, display: display)
+                EditableTextList(title: "黑名单", texts: $config.blacklist, display: display)
             }
             .frame(minHeight: 6 * rowHeight, maxHeight: 12 * rowHeight)
         }
         .padding()
+        .onAppear(perform: refreshNames)
+        .onReceive(NotificationCenter.default.publisher(for: .koreanInputResourcesChanged)) { _ in refreshNames() }
     }
 }
 

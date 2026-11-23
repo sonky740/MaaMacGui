@@ -11,7 +11,8 @@ struct FightSettingsView: View {
     @Binding var config: FightConfiguration
 
     @State private var useCustomStage = false
-    @State private var dropItemList: [(name: String, id: String)] = []
+    @State private var dropItemList: [FightDropItem] = []
+    @State private var lastDrop: (key: String, value: Int)?
 
     var body: some View {
         Form {
@@ -68,10 +69,13 @@ struct FightSettingsView: View {
             Divider()
 
             Section {
-                Picker(selection: dropItemIdx) {
-                    Text("").tag(nil as Int?)
-                    ForEach(Array(zip(dropItemList.indices, dropItemList)), id: \.0) {
-                        Text($1.0).tag($0 as Int?)
+                Picker(selection: dropItemID) {
+                    Text("").tag(nil as String?)
+                    if let id = config.drops?.first?.key, !dropItemList.contains(where: { $0.id == id }) {
+                        Text(verbatim: id).tag(Optional(id))
+                    }
+                    ForEach(dropItemList) { item in
+                        Text(verbatim: item.name).tag(Optional(item.id))
                     }
                 } label: {
                     Toggle("指定材料", isOn: dropItemToggle)
@@ -81,16 +85,10 @@ struct FightSettingsView: View {
                         Text("刷取数量")
                     }
                 }
-            }.onAppear {
-                do {
-                    try FightConfiguration.initDropItems("zh-cn")
-                } catch let err {
-                    print(String(localized: "Read item_index.json failed: \(err.localizedDescription)"))
-                }
-                dropItemList = FightConfiguration.dropItems.map {
-                    (name: $0.item.name, id: $0.id)
-                }
-                dropItem = config.drops?.first
+            }
+            .onAppear(perform: reloadDropItems)
+            .onReceive(NotificationCenter.default.publisher(for: .koreanInputResourcesChanged)) { _ in
+                reloadDropItems()
             }
 
             Divider()
@@ -150,52 +148,44 @@ struct FightSettingsView: View {
         }
     }
 
-    @State private var dropItem: (String, Int)? = nil {
-        didSet {
-            if dropItemToggle.wrappedValue {
-                config.drops =
-                    if let dropItem {
-                        [dropItem.0: dropItem.1]
-                    } else {
-                        nil
-                    }
-            }
+    private func reloadDropItems() {
+        do {
+            dropItemList = try FightDropItem.load(
+                language: Bundle.main.preferredLocalizations.first ?? "zh-Hans",
+                baseRoots: KoreanInputResources.baseRoots)
+        } catch {
+            dropItemList = []
+            print(String(localized: "Read item_index.json failed: \(error.localizedDescription)"))
         }
     }
 
-    private var dropItemIdx: Binding<Int?> {
+    private var dropItemID: Binding<String?> {
         Binding {
-            guard let id = dropItem?.0 else { return nil }
-            return FightConfiguration.id2index[id]
-        } set: {
-            dropItem =
-                if let idx = $0 {
-                    (dropItemList[idx].id, dropItemCount.wrappedValue)
-                } else {
-                    nil
-                }
+            config.drops?.first?.key
+        } set: { id in
+            config.drops = id.map { [$0: dropItemCount.wrappedValue] }
         }
     }
 
     private var dropItemCount: Binding<Int> {
         Binding {
-            dropItem?.1 ?? 5
-        } set: {
-            guard dropItem != nil else { return }
-            dropItem!.1 = $0
+            config.drops?.first?.value ?? 5
+        } set: { count in
+            if let id = config.drops?.first?.key { config.drops?[id] = count }
         }
     }
 
     private var dropItemToggle: Binding<Bool> {
         Binding {
             config.drops != nil
-        } set: {
-            config.drops =
-                if $0 {
-                    if let dropItem { [dropItem.0: dropItem.1] } else { nil }
-                } else {
-                    nil
-                }
+        } set: { enabled in
+            if enabled {
+                if let lastDrop { config.drops = [lastDrop.key: lastDrop.value] }
+                else { config.drops = [:] }
+            } else {
+                lastDrop = config.drops?.first
+                config.drops = nil
+            }
         }
     }
 

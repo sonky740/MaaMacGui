@@ -21,6 +21,32 @@ def load(text):
 def tokens(s):
     return collections.Counter(re.findall('%(?:%|(?:\\d+\\$)?(?:\\([^)]+\\))?[-+#0 ]*(?:\\d+|\\*)?(?:\\.(?:\\d+|\\*))?(?:hh|ll|h|l|q|z|t|j|L)?[@diuoxXfFeEgGaAcCsSp])', s))
 
+def check_roguelike_options(catalog, settings):
+    expected = {'难度%lld'}
+    for field in ('squads', 'roles'):
+        declaration = f'    var {field}: [String] {{'
+        if declaration not in settings:
+            raise ValidationError(f'Cannot find Roguelike {field} in settings')
+        body = settings.split(declaration, 1)[1].split('\n    }', 1)[0]
+        # The Korean catalog currently covers all themes except Sarkaz-only options.
+        body = re.sub(r'case \.Sarkaz:\s*\[.*?\]', '', body, flags=re.DOTALL)
+        options = re.findall(r'"([^"\n]+)"', body)
+        if not options:
+            raise ValidationError(f'Cannot find Roguelike {field} options')
+        expected.update(options)
+    profiles = ('ending1', 'ending2', 'ending3', 'investment', 'burn', 'burn_with_investment',
+                'baby_animal', 'baby_animal_floor3', 'start_run_animals', 'start_run_rewards',
+                'start_run_rewards_with_investment')
+    expected.update(f'BlackFlowProfile.{profile}' for profile in profiles)
+    entries = catalog['strings']
+    if set(entries) != expected:
+        raise ValidationError(f'Roguelike option keys differ: {sorted(set(entries) ^ expected)}')
+    for key, entry in entries.items():
+        unit = entry['localizations']['ko']['stringUnit']
+        value = unit['value']
+        if unit['state'] != 'translated' or not re.search('[가-힣]', value) or tokens(key) != tokens(value):
+            raise ValidationError(f'Invalid Korean Roguelike option: {key!r}')
+
 def check(before, after):
     if not before.keys() == after.keys():
         raise ValidationError('Root structure changed')
@@ -70,10 +96,10 @@ def check(before, after):
         raise ValidationError('Original entries, other languages, metadata, or plural structure changed')
     return added
 
-def negative_tests(before, after):
-    def rejected(name, candidate):
+def negative_tests(before, after, options, settings):
+    def rejected(name, checker, *inputs):
         try:
-            check(before, candidate)
+            checker(*inputs)
         except ValidationError:
             print(f"Negative test passed: {name}")
         else:
@@ -87,10 +113,16 @@ def negative_tests(before, after):
     ]:
         candidate = copy.deepcopy(after)
         candidate["strings"][key]["localizations"][lang]["stringUnit"]["value"] = value
-        rejected(name, candidate)
+        rejected(name, check, before, candidate)
     candidate = copy.deepcopy(after)
     candidate["sourceLanguage"] = "en"
-    rejected("root structure", candidate)
+    rejected("root structure", check, before, candidate)
+    candidate = copy.deepcopy(options)
+    del candidate['strings']['指挥分队']
+    rejected("missing squad translation", check_roguelike_options, candidate, settings)
+    candidate = copy.deepcopy(options)
+    candidate['strings']['难度%lld']['localizations']['ko']['stringUnit']['value'] = '난이도 %@'
+    rejected("difficulty integer placeholder", check_roguelike_options, candidate, settings)
     try:
         load('{"duplicate": 1, "duplicate": 2}')
     except ValueError:
@@ -117,9 +149,13 @@ def main():
     before = load(original)
     after = load(args.catalog.read_text(encoding="utf-8"))
     added = check(before, after)
+    options = load((root / 'Resources/RoguelikeOptions.xcstrings').read_text(encoding='utf-8'))
+    settings = (root / 'MeoAsstMac/Configuration Views/RoguelikeSettingsView.swift').read_text(encoding='utf-8')
+    check_roguelike_options(options, settings)
     if args.negative_tests:
-        negative_tests(before, after)
+        negative_tests(before, after, options, settings)
     print(f"Catalog valid; {len(added)} Korean translations added; {len(REVIEWED)} reviewed replacements verified")
+    print(f"Roguelike options valid; {len(options['strings'])} Korean labels verified")
 
 
 if __name__ == "__main__":

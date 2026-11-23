@@ -241,7 +241,11 @@ private struct CopilotListToolbar: ToolbarContent {
 
     private func start() {
         Task {
-            try await newModel.startCopilot()
+            do {
+                try await newModel.startCopilot()
+            } catch {
+                newModel.appendLog(.init(date: .now, content: error.localizedDescription, color: .error))
+            }
         }
     }
 

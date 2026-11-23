@@ -33,7 +33,11 @@ struct TaskDetail: View {
                     case .switchTheme(let config):
                         SwitchThemeSettingsView(config: taskConfigBinding(config, id: id))
                     case .roguelike(let config):
-                        RoguelikeSettingsView(config: taskConfigBinding(config, id: id))
+                        RoguelikeSettingsView(config: Binding {
+                            if case .roguelike(let current) = viewModel.tasks[id] { return current }
+                            return config
+                        } set: { viewModel.tasks[id] = .roguelike($0) })
+                        .id(id)
                     case .reclamation(let config):
                         ReclamationSettingsView(config: taskConfigBinding(config, id: id))
                     case .closedown(_):

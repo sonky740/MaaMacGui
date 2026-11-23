@@ -281,6 +281,12 @@
     "AlgorithmFinish" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연산을 마쳤습니다\n번영의 배지: %1$(badges)@\n건설 포인트: %2$(points)@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -600,6 +606,12 @@
     "BlackFlowStrategyStarted" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "블랙 플로우 전략을 시작했습니다: %1$(profile)@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -798,6 +810,12 @@
     "BoskyDisaster" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 소란"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -809,6 +827,12 @@
     "BoskyDoubts" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 의문"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -820,6 +844,12 @@
     "BoskyLegend" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 전설"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -831,6 +861,12 @@
     "BoskyOldShop" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 술집"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -842,6 +878,12 @@
     "BoskyOmissions" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 회수"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -853,6 +895,12 @@
     "BoskyPlaytime" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 여흥"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -864,6 +912,12 @@
     "BoskyScheme" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 계획"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -875,6 +929,12 @@
     "BoskyYiTrader" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잔식: 거래"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1618,6 +1678,12 @@
     "FilterTruth" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "노드: 거짓과 진실"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1629,6 +1695,12 @@
     "FoldartalGainOcrNextLevel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예견한 암호판: %1$(name)@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2848,6 +2920,12 @@
     "RoguelikeCoppersExchange" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주화 교환: %1$(from)@ → %2$(to)@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2859,6 +2937,12 @@
     "RoguelikeCoppersRecognitionError" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주화를 인식하지 못했습니다: “%1$(name)@”"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3040,6 +3124,12 @@
     "RoguelikeJieGardenTargetFound" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목표 여흥 노드 “%1$(name)@”을 발견했습니다"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3068,6 +3158,12 @@
     "RoguelikePlaytimeLing" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "링 - 주화 놀이"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3079,6 +3175,12 @@
     "RoguelikePlaytimeNian" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "니엔 - 한 명 부족"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3090,6 +3192,12 @@
     "RoguelikePlaytimeShu" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "슈 - 인과"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4593,10 +4701,24 @@
       }
     },
     "刷常乐节点" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여흥 노드 탐색"
+          }
+        }
+      }
     },
     "刷常乐节点，第一层进洞，找不到需要的节点就重开" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1층에서 쉐이의 잔식에 진입합니다. 목표 여흥 노드를 찾지 못하면 탐색을 다시 시작합니다."
+          }
+        }
+      }
     },
     "刷开局，刷取热水壶或精二干员开局" : {
       "localizations" : {
@@ -4693,7 +4815,14 @@
 
     },
     "刷襁褓动物" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포대기 동물 육성"
+          }
+        }
+      }
     },
     "刷赤金" : {
       "localizations" : {
@@ -4777,7 +4906,14 @@
       }
     },
     "即将" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "곧"
+          }
+        }
+      }
     },
     "原始分辨率：" : {
       "localizations" : {
@@ -6318,7 +6454,14 @@
       }
     },
     "沉沦者的黑流树海" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "블랙 플로우"
+          }
+        }
+      }
     },
     "沙中之火" : {
       "localizations" : {
@@ -6444,6 +6587,12 @@
     },
     "游戏内历法：%@" : {
       "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임 내 달력: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6634,10 +6783,24 @@
       }
     },
     "目标常乐节点" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목표 여흥 노드"
+          }
+        }
+      }
     },
     "目标襁褓动物" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "육성할 포대기 동물"
+          }
+        }
+      }
     },
     "盾" : {
       "localizations" : {
@@ -6696,7 +6859,14 @@
       }
     },
     "票券" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "티켓"
+          }
+        }
+      }
     },
     "移除" : {
       "localizations" : {
@@ -6998,7 +7168,14 @@
       }
     },
     "自动抄悖论模拟作业" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "패러독스 시뮬레이션 작전 자동 실행"
+          }
+        }
+      }
     },
     "自动检查更新" : {
       "localizations" : {
@@ -7212,16 +7389,44 @@
       }
     },
     "襁褓三头犬" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포대기의 케르베로스"
+          }
+        }
+      }
     },
     "襁褓中的狗" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포대기의 개"
+          }
+        }
+      }
     },
     "襁褓中的猫" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포대기의 고양이"
+          }
+        }
+      }
     },
     "襁褓羽蛇" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포대기의 깃털 뱀"
+          }
+        }
+      }
     },
     "解析 %@[%@] 成功" : {
       "localizations" : {
@@ -7698,7 +7903,14 @@
       }
     },
     "重启锚点" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "리런치 앵커"
+          }
+        }
+      }
     },
     "重新加载文件" : {
       "localizations" : {
@@ -7942,7 +8154,14 @@
       }
     },
     "黑流树海" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "블랙 플로우"
+          }
+        }
+      }
     },
     "默认兼容模式" : {
       "localizations" : {

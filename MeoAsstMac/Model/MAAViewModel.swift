@@ -25,6 +25,8 @@ import SwiftUI
 
     private var wakeupAssertionID: UInt32?
     private var awakeAssertionID: UInt32?
+    private var resourceLoad: Task<Void, Error>?
+    private var resourceGeneration = 0
     private var handle: MAAHandle?
     private var cancellables = Set<AnyCancellable>()
 
@@ -103,7 +105,7 @@ import SwiftUI
         didSet {
             guard touchMode != oldValue else { return }
             if touchMode == .MacPlayTools || oldValue == .MacPlayTools {
-                Task { try await loadResource(channel: clientChannel) }
+                scheduleResourceLoad(channel: clientChannel)
             }
         }
     }
@@ -182,7 +184,8 @@ extension MAAViewModel {
         if useWebGPU {
             try await MAAProvider.shared.setStaticOption(key: 2, value: "webgpu:0")
         }
-        try await loadResource(channel: clientChannel)
+        scheduleResourceLoad(channel: clientChannel)
+        try await waitForInputResources()
         status = .idle
     }
 
@@ -273,6 +276,36 @@ extension MAAViewModel {
 
     /// Reloads the resources from the documents directory after update.
     func reloadResources(channel: MAAClientChannel) async throws {
+        scheduleResourceLoad(channel: channel, documentsOnly: true)
+        try await waitForInputResources()
+    }
+
+    private func scheduleResourceLoad(channel: MAAClientChannel, documentsOnly: Bool = false) {
+        let previous = resourceLoad
+        resourceGeneration += 1
+        resourceLoad = Task {
+            // Let a later reload recover even if the previous one failed.
+            _ = await previous?.result
+            if documentsOnly {
+                try await loadDocumentResources(channel: channel)
+            } else {
+                try await loadResource(channel: channel)
+            }
+        }
+    }
+
+    func waitForInputResources() async throws {
+        repeat {
+            let generation = resourceGeneration
+            let result = await resourceLoad?.result
+            if generation == resourceGeneration {
+                try result?.get()
+                return
+            }
+        } while true
+    }
+
+    private func loadDocumentResources(channel: MAAClientChannel) async throws {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         try await loadResource(url: documentsDirectory, channel: channel)
     }
@@ -280,15 +313,15 @@ extension MAAViewModel {
     /// Load base resources and channel-specific resources.
     ///
     /// Should be called by `loadResource(channel:)`.
-    private func loadResource(url: URL, channel: MAAClientChannel) async throws {
-        try await loadResource(url: url)
+    private func loadResource(url: URL, channel: MAAClientChannel, reset: Bool = false) async throws {
+        try await loadResource(url: url, channel: channel, isBase: true, reset: reset)
 
         if channel.isGlobal {
             let extraResource = url.appendingPathComponent("resource")
                 .appendingPathComponent("global")
                 .appendingPathComponent(channel.rawValue)
             if FileManager.default.fileExists(atPath: extraResource.path) {
-                try await loadResource(url: extraResource)
+                try await loadResource(url: extraResource, channel: channel, isBase: false)
             }
         }
     }
@@ -296,8 +329,9 @@ extension MAAViewModel {
     /// Core process to load resources at url.
     ///
     /// Should be called by `loadResource(url:channel:)`.
-    private func loadResource(url: URL) async throws {
+    private func loadResource(url: URL, channel: MAAClientChannel, isBase: Bool, reset: Bool = false) async throws {
         try await MAAProvider.shared.loadResource(path: url.path)
+        KoreanInputResources.record(url.appendingPathComponent("resource"), base: isBase, reset: reset, koreanServer: channel == .YoStarKR)
 
         if touchMode == .MacPlayTools {
             let platformResource = url.appendingPathComponent("resource")
@@ -305,6 +339,7 @@ extension MAAViewModel {
                 .appendingPathComponent("iOS")
             if FileManager.default.fileExists(atPath: platformResource.path) {
                 try await MAAProvider.shared.loadResource(path: platformResource.path)
+                KoreanInputResources.record(platformResource.appendingPathComponent("resource"), base: false, reset: false, koreanServer: channel == .YoStarKR)
             }
         }
     }
@@ -341,11 +376,11 @@ extension MAAViewModel {
     /// Should be the outermost call to load resources.
     private func loadResource(channel: MAAClientChannel) async throws {
         let (preferUser, currentResourceVersion) = try resourceChannel.version()
-        try await loadResource(url: Bundle.main.resourceURL!, channel: channel)
+        try await loadResource(url: Bundle.main.resourceURL!, channel: channel, reset: true)
 
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         if preferUser {
-            try await reloadResources(channel: channel)
+            try await loadDocumentResources(channel: channel)
             logTrace(
                 """
                 外部资源版本：\(currentResourceVersion.title)
@@ -401,9 +436,7 @@ extension MAAViewModel {
             tasks[index] = .init(id: task.id, task: .startup(config), enabled: task.enabled)
         }
 
-        Task {
-            try await loadResource(channel: channel)
-        }
+        scheduleResourceLoad(channel: channel)
     }
 
     private func handleEarlyReturn(backTo: Status) {
@@ -436,7 +469,8 @@ extension MAAViewModel {
             logStore?.setDailyTasksDetailMode(.log)
             try await startTasks()
         } catch {
-            logError("StartTasksFailed: \(String(describing: error))")
+            let message = (error as NSError).userInfo[NSLocalizedDescriptionKey] as? String ?? String(describing: error)
+            logError("StartTasksFailed: \(message)")
             logInfo("CheckSettings")
         }
     }
@@ -445,39 +479,41 @@ extension MAAViewModel {
         status = .pending
         defer { handleEarlyReturn(backTo: .idle) }
 
-        var firstStart = true
-        for (index, task) in tasks.enumerated() {
-            guard case .startup(var config) = task.task else {
-                continue
+        try await waitForInputResources()
+        let queue = try tasks.filter(\.enabled).map { row in
+            let task: MAATask
+            switch row.task {
+            case .roguelike(var config):
+                try config.resolveStartOperator()
+                try config.validateSamiInputs()
+                task = .roguelike(config)
+            case .mall(let config):
+                task = .mall(try config.resolvingKoreanShopFilters())
+            case .reclamation(let config):
+                task = .reclamation(try config.resolvingKoreanCraftTools())
+            case .startup(var config):
+                config.client_type = clientChannel
+                task = .startup(config)
+            case .closedown(var config):
+                config.client_type = clientChannel
+                task = .closedown(config)
+            default:
+                task = row.task
             }
-
-            config.client_type = clientChannel
-            tasks[index] = .init(id: task.id, task: .startup(config), enabled: task.enabled)
-
-            if touchMode == .MacPlayTools, task.enabled, config.start_game_enabled, firstStart {
-                guard await startGame(client: config.client_type) else {
-                    throw MAAError.gameStartFailed
-                }
-                firstStart = false
-            }
+            return DailyTask(id: row.id, task: task, enabled: true)
         }
 
-        for (index, task) in tasks.enumerated() {
-            guard case .closedown(var config) = task.task else {
-                continue
-            }
-
-            config.client_type = clientChannel
-            tasks[index] = .init(id: task.id, task: .closedown(config), enabled: task.enabled)
+        if touchMode == .MacPlayTools, queue.contains(where: { row in
+            if case .startup(let config) = row.task { return config.start_game_enabled }
+            return false
+        }) {
+            guard await startGame(client: clientChannel) else { throw MAAError.gameStartFailed }
         }
 
         try await ensureHandle()
-
-        for task in tasks {
-            guard task.enabled else { continue }
-
-            if let coreID = try await handle?.appendTask(task.task) {
-                taskIDMap[coreID] = task.id
+        for row in queue {
+            if let coreID = try await handle?.appendTask(row.task) {
+                taskIDMap[coreID] = row.id
             }
         }
 
