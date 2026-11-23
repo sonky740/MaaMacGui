@@ -38,7 +38,19 @@ struct MallConfiguration: MAATaskConfiguration {
     }
 
     var summary: String {
-        buy_first.joined(separator: ";")
+        let filters = KoreanInputResources.isKoreanUI && KoreanInputResources.isKoreanServer
+            ? buy_first.map(KoreanShopNames.current.displayedKeyword)
+            : buy_first
+        return filters.joined(separator: ";")
+    }
+
+    func resolvingKoreanShopFilters() throws -> Self {
+        guard shopping, KoreanInputResources.isKoreanServer else { return self }
+        let names = KoreanShopNames.current
+        var result = self
+        result.buy_first = try buy_first.map(names.keyword).filter { !$0.isEmpty }
+        result.blacklist = try blacklist.map(names.keyword).filter { !$0.isEmpty }
+        return result
     }
 
     var projectedTask: MAATask {

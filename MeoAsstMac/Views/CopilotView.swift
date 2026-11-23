@@ -123,7 +123,8 @@ private struct RegularCopilotConfigView: View {
                     }
                 }
                 if config.support_unit_usage == .specific {
-                    TextField("干员名称", text: $config.support_unit_name)
+                    KoreanOperatorField(
+                        title: "干员名称", config: $config, name: \.support_unit_name, draft: \.supportOperatorDraft)
                         .frame(maxWidth: 150)
                 }
             }

@@ -60,17 +60,18 @@ struct RoguelikeSettingsView: View {
     @ViewBuilder private func squadSettings() -> some View {
         Picker("开局分队", selection: $config.squad) {
             ForEach(config.theme.squads, id: \.self) { squad in
-                Text(squad).tag(squad)
+                Text(LocalizedStringKey(squad), tableName: "RoguelikeOptions").tag(squad)
             }
         }
 
         Picker("开局职业组", selection: $config.roles) {
             ForEach(config.theme.roles, id: \.self) { role in
-                Text(role).tag(role)
+                Text(LocalizedStringKey(role), tableName: "RoguelikeOptions").tag(role)
             }
         }
 
-        TextField("开局干员（单个）", text: $config.core_char)
+        KoreanOperatorField(
+            title: "开局干员（单个）", config: $config, name: \.core_char, draft: \.startOperatorDraft)
 
         HStack {
             Toggle("“开局干员”使用助战", isOn: $config.use_support)
@@ -114,7 +115,7 @@ struct RoguelikeSettingsView: View {
         if config.mode == .collectible {
             Picker("烧水分队", selection: $config.collectible_mode_squad) {
                 ForEach(config.theme.squads, id: \.self) {
-                    Text($0).tag($0)
+                    Text(LocalizedStringKey($0), tableName: "RoguelikeOptions").tag($0)
                 }
             }
 
@@ -160,13 +161,16 @@ struct RoguelikeSettingsView: View {
                 Toggle("检测获取的坍缩范式", isOn: $config.check_collapsal_paradigms)
             }
             if config.mode == .collectible {
-                TextField("一层远见密文板", text: $config.first_floor_foldartal)
+                KoreanSamiTextField(
+                    title: "一层远见密文板", config: $config, kind: .forecastFoldartal)
                 if config.squad == "生活至上分队" {
-                    TextField("分队开局密文板", text: $config.semicolonString(for: \.start_foldartal_list))
+                    KoreanSamiTextField(
+                        title: "分队开局密文板", config: $config, kind: .startingFoldartals)
                 }
             }
             if config.mode == .clpPds {
-                TextField("待刷坍缩范式", text: $config.semicolonString(for: \.expected_collapsal_paradigms))
+                KoreanSamiTextField(
+                    title: "待刷坍缩范式", config: $config, kind: .paradigms)
             }
         }
 

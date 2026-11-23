@@ -10,6 +10,7 @@ import SwiftUI
 struct EditableTextList: View {
     let title: LocalizedStringKey
     @Binding var texts: [String]
+    var display: (String) -> String = { $0 }
 
     private struct TextEntry: Equatable, Identifiable {
         let id: Int
@@ -32,7 +33,11 @@ struct EditableTextList: View {
             Section {
                 ForEach(entries) { entry in
                     HStack {
-                        TextField("", text: entry.element)
+                        TextField("", text: Binding {
+                            display(entry.element.wrappedValue)
+                        } set: { value in
+                            entry.element.wrappedValue = value
+                        })
                             .focused($focusedField, equals: entry.id)
                         Button {
                             focusedField = entry.id

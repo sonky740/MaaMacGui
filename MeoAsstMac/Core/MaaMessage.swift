@@ -1339,9 +1339,10 @@ extension MAAViewModel {
             }
 
         case "BlackFlowStrategyStarted":
-            // TODO: (Localization) Localize the BlackFlow profile value.
             let profile: String = (try? info.details["profile"]) ?? ""
-            logInfo(.blackFlowStrategyStarted(profile: profile))
+            let key = "BlackFlowProfile.\(profile)"
+            let label = Bundle.main.localizedString(forKey: key, value: nil, table: "RoguelikeOptions")
+            logInfo(.blackFlowStrategyStarted(profile: label == key ? profile : label))
 
         case "BlackFlowStrategyResult":
             // TODO: (Localization) Localize the BlackFlow outcome value.

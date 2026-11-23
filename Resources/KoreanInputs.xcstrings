@@ -1,0 +1,188 @@
+{
+  "sourceLanguage": "zh-Hans",
+  "strings": {
+    "slower": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decel Binder"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "감속자"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "凝滞师"
+          }
+        }
+      }
+    },
+    "summoner": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summoner"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "소환사"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "召唤师"
+          }
+        }
+      }
+    },
+    "干员资料尚不可用": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operator name data is unavailable."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오퍼레이터 이름 자료를 불러올 수 없습니다."
+          }
+        }
+      }
+    },
+    "无法识别萨米坍缩范式“%@”": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown Sami Collapsal Paradigm “%@”."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사미 붕괴 패러다임 이름을 확인해 주세요: %@"
+          }
+        }
+      }
+    },
+    "无法识别萨米密文板“%@”": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown Sami Foldartal “%@”."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사미 암호판 이름을 확인해 주세요: %@"
+          }
+        }
+      }
+    },
+    "无法读取韩服购物资料": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read the Korean shop resources."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한국 서버 상점 데이터를 읽을 수 없습니다."
+          }
+        }
+      }
+    },
+    "未找到干员：%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown operator: %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오퍼레이터 이름을 찾을 수 없습니다: %@"
+          }
+        }
+      }
+    },
+    "请用游戏内韩文重新输入支援道具：%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter this crafting tool as shown in the Korean client: %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한국 서버에 표시되는 제작 도구 이름을 입력해 주세요: %@"
+          }
+        }
+      }
+    },
+    "请用游戏内韩文重新输入购物关键词：%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter this shopping keyword as shown in the Korean client: %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한국 서버 상점에 표시되는 검색어를 입력해 주세요: %@"
+          }
+        }
+      }
+    },
+    "请选择同名干员：%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select the intended operator: %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "같은 이름의 오퍼레이터를 선택해 주세요: %@"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

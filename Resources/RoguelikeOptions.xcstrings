@@ -1,0 +1,566 @@
+{
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "BlackFlowProfile.baby_animal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작 보상 반복, 목표 달성 시 종료하고 이번 탐험 유지"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.baby_animal_floor3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작 보상 반복, 목표 달성 시 종료하고 이번 탐험 유지"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.burn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "레벨 우선, 빠르게 3층으로 이동"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.burn_with_investment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "레벨 우선, 빠르게 3층으로 이동"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.ending1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제1 엔딩 · 강제 재시작"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.ending2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제2 엔딩 · 차원 재구성"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.ending3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제3 엔딩 · 얽힘, 조화"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.investment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오리지늄각뿔 투자, 투자 완료 후 자동 종료"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.start_run_animals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작 보상 반복, 목표 달성 시 종료하고 이번 탐험 유지"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.start_run_rewards" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작 보상 반복, 목표 달성 시 종료하고 이번 탐험 유지"
+          }
+        }
+      }
+    },
+    "BlackFlowProfile.start_run_rewards_with_investment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작 보상 반복, 목표 달성 시 종료하고 이번 탐험 유지"
+          }
+        }
+      }
+    },
+    "以人为本分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인적자원 분대"
+          }
+        }
+      }
+    },
+    "先手必胜" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선수필승"
+          }
+        }
+      }
+    },
+    "取长补短" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상호보완"
+          }
+        }
+      }
+    },
+    "司岁台分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사세대 분대"
+          }
+        }
+      }
+    },
+    "后勤分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지원 분대"
+          }
+        }
+      }
+    },
+    "商贾分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상인 분대"
+          }
+        }
+      }
+    },
+    "地质调查分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지질 조사 분대"
+          }
+        }
+      }
+    },
+    "地面突破分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지상 돌파 분대"
+          }
+        }
+      }
+    },
+    "坚不可摧" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "파괴 불가"
+          }
+        }
+      }
+    },
+    "堡垒战术分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "방어 전술 분대"
+          }
+        }
+      }
+    },
+    "多边贸易分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다자 무역 분대"
+          }
+        }
+      }
+    },
+    "天师府分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "천사부 분대"
+          }
+        }
+      }
+    },
+    "岁影回音分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쉐이 울림 분대"
+          }
+        }
+      }
+    },
+    "开拓者分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개척자 분대"
+          }
+        }
+      }
+    },
+    "心胜于物分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마음가짐 분대"
+          }
+        }
+      }
+    },
+    "指挥分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지휘 분대"
+          }
+        }
+      }
+    },
+    "文明开化分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문명 개화 분대"
+          }
+        }
+      }
+    },
+    "本源研修分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프라이멀 연구 분대"
+          }
+        }
+      }
+    },
+    "棋行险着分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초강수 분대"
+          }
+        }
+      }
+    },
+    "永恒狩猎分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영원한 사냥 분대"
+          }
+        }
+      }
+    },
+    "游客分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "방문객 분대"
+          }
+        }
+      }
+    },
+    "灵活部署" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유연한 배치"
+          }
+        }
+      }
+    },
+    "物尽其用分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "적재적소 분대"
+          }
+        }
+      }
+    },
+    "特勤分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특근 분대"
+          }
+        }
+      }
+    },
+    "特训分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특훈 분대"
+          }
+        }
+      }
+    },
+    "生活至上分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "생존지상 분대"
+          }
+        }
+      }
+    },
+    "矛头分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예봉 분대"
+          }
+        }
+      }
+    },
+    "知学分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "학자 분대"
+          }
+        }
+      }
+    },
+    "研究分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연구 분대"
+          }
+        }
+      }
+    },
+    "破坏战术分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "파괴 전술 분대"
+          }
+        }
+      }
+    },
+    "科学主义分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "과학주의 분대"
+          }
+        }
+      }
+    },
+    "稳扎稳打" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차근차근"
+          }
+        }
+      }
+    },
+    "突击战术分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "강습 전술 분대"
+          }
+        }
+      }
+    },
+    "花团锦簇分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "꽃다발 분대"
+          }
+        }
+      }
+    },
+    "远程战术分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원거리 전술 분대"
+          }
+        }
+      }
+    },
+    "随心所欲" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원하는 대로"
+          }
+        }
+      }
+    },
+    "集群分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "집합 분대"
+          }
+        }
+      }
+    },
+    "高台突破分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고지대 돌파 분대"
+          }
+        }
+      }
+    },
+    "高规格分队" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고급화 분대"
+          }
+        }
+      }
+    },
+    "难度%lld" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "난이도 %lld"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

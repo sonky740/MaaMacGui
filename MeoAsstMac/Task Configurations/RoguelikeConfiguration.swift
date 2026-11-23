@@ -104,6 +104,7 @@ struct RoguelikeConfiguration: MAATaskConfiguration {
     var squad: String
     var roles: String
     var core_char: String
+    @InputDraft var startOperatorDraft: String?
     var use_support: Bool {
         didSet {
             if use_support { start_with_elite_two = false }
@@ -145,10 +146,12 @@ struct RoguelikeConfiguration: MAATaskConfiguration {
     ///
     /// 仅适用于 `Sami` 主题
     var first_floor_foldartal: String
+    @InputDraft var forecastDraft: String?
     /// 凹开局时希望在开局奖励阶段得到的密文板，最多三块，可选，默认值 `[]`
     ///
     /// 仅在主题为 `Sami` 模式为 `collectible` 且使用 "生活至上分队" 时有效；
     var start_foldartal_list: [String]
+    @InputDraft var startingBoardsDraft: String?
     /// 是否使用密文板，模式 `clpPds` 下默认值 `false`，其他模式下默认值 `true`
     ///
     /// 仅适用于 `Sami` 主题
@@ -161,6 +164,7 @@ struct RoguelikeConfiguration: MAATaskConfiguration {
     ///
     /// 仅在主题为 `Sami` 且模式为 `clpPds` 时有效
     var expected_collapsal_paradigms: [String]
+    @InputDraft var paradigmsDraft: String?
     /// 是否启动月度小队自动切换
     ///
     /// 仅在模式为 `squad` 时有效
@@ -212,7 +216,14 @@ struct RoguelikeConfiguration: MAATaskConfiguration {
     }
 
     var summary: String {
-        "\(difficulty.description) \(mode.shortDescription) \(core_char)"
+        let name = KoreanInputResources.isKoreanUI ? KoreanOperatorNames.current.display(core_char) : core_char
+        return "\(difficulty.description) \(mode.shortDescription) \(name)"
+    }
+
+    mutating func resolveStartOperator() throws {
+        core_char = try KoreanOperatorNames.current.coreName(
+            startOperatorDraft ?? core_char, koreanUI: KoreanInputResources.isKoreanUI)
+        startOperatorDraft = nil
     }
 
     var projectedTask: MAATask {
@@ -333,7 +344,7 @@ extension RoguelikeConfiguration.Difficulty: Codable, CustomStringConvertible {
         case .current:
             return String(localized: "当前难度")
         default:
-            return "难度\(id)"
+            return String(localized: "难度\(id)", table: "RoguelikeOptions")
         }
     }
 
@@ -387,24 +398,44 @@ extension RoguelikeConfiguration {
 
     fileprivate var checkedFirstFloorFoldartal: String? {
         guard theme == .Sami, mode == .collectible else { return nil }
-        let foldartal = first_floor_foldartal.trimmingCharacters(in: .whitespacesAndNewlines)
+        let foldartal = (forecastDraft ?? first_floor_foldartal).trimmingCharacters(in: .whitespacesAndNewlines)
         guard !foldartal.isEmpty else { return nil }
-        return foldartal
+        return KoreanSamiNames.current.coreName(foldartal, as: .forecastFoldartal) ?? foldartal
     }
 
     fileprivate var checkedStartFoldartalList: [String]? {
         guard theme == .Sami, mode == .collectible, squad == "生活至上分队" else { return nil }
-        let foldartals = start_foldartal_list.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        let values = startingBoardsDraft?.components(separatedBy: ";") ?? start_foldartal_list
+        let foldartals = values.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
             .prefix(3)
-        return foldartals.isEmpty ? nil : Array(foldartals)
+        guard !foldartals.isEmpty else { return nil }
+        let names = KoreanSamiNames.current
+        return foldartals.map { names.coreName($0, as: .startingFoldartals) ?? $0 }
     }
 
     fileprivate var checkedExpectedCollapsalParadigms: [String]? {
         guard theme == .Sami, mode == .clpPds else { return nil }
-        let paradigms = expected_collapsal_paradigms.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        let values = paradigmsDraft?.components(separatedBy: ";") ?? expected_collapsal_paradigms
+        let paradigms = values.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
-        return paradigms.isEmpty ? nil : paradigms
+        guard !paradigms.isEmpty else { return nil }
+        let names = KoreanSamiNames.current
+        return paradigms.map { names.coreName($0, as: .paradigms) ?? $0 }
+    }
+
+    func validateSamiInputs() throws {
+        guard theme == .Sami else { return }
+        let fields: [(SamiInputKind, [String])] = [
+            (.forecastFoldartal, checkedFirstFloorFoldartal.map { [$0] } ?? []),
+            (.startingFoldartals, checkedStartFoldartalList ?? []),
+            (.paradigms, checkedExpectedCollapsalParadigms ?? []),
+        ]
+        for (kind, values) in fields {
+            for value in values where KoreanSamiNames.current.coreName(value, as: kind) == nil {
+                throw kind.error(for: value)
+            }
+        }
     }
 
     fileprivate var checkedStartCollectibles: StartCollectibles? {
