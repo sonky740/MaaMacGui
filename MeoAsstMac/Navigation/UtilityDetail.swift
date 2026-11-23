@@ -18,6 +18,8 @@ struct UtilityDetail: View {
                 RecruitView()
             case .depot:
                 DepotView()
+            case .operatorGrowth:
+                OperatorGrowthView()
             case .oper:
                 OperBoxView()
             case .video:

@@ -84,6 +84,7 @@ struct KoreanOCRTasks {
         return nil
     }
 
+    func contains(_ name: String) -> Bool { definitions[name] != nil }
     func replacements(for task: String) -> [[String]] { inherited(\.replacements, for: task) ?? [] }
     func text(for task: String) -> [String] { inherited(\.text, for: task) ?? [] }
     func replacesWholeText(for task: String) -> Bool { inherited(\.replaceFull, for: task) ?? false }

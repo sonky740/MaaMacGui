@@ -36,6 +36,7 @@
 		83264A3B29EC0F2E0074E33A /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A3A29EC0F2E0074E33A /* LogView.swift */; };
 		83264A3E29EC22DE0074E33A /* MAAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264A3D29EC22DE0074E33A /* MAAViewModel.swift */; };
 		83264ACB29EC0F2E0074E33A /* EditableTextList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83264ACA29EC0F2E0074E33A /* EditableTextList.swift */; };
+		49AE64D9E30CFBEB03218E80 /* OperatorGrowthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BB5F4F2349602B2961C3C0 /* OperatorGrowthView.swift */; };
 		0E30FDE754235373B2C9244F /* KoreanOperatorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D36BE872CD50BE93157B47 /* KoreanOperatorField.swift */; };
 		698C48B948955AF0A8FA670B /* KoreanSamiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FDCF738F7952FFAF3D78EB /* KoreanSamiTextField.swift */; };
 		832903A9302C9802008E1DC6 /* URL+contentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832903A8302C9802008E1DC6 /* URL+contentType.swift */; };
@@ -89,6 +90,9 @@
 		E151744A288755679AFDCCE5 /* FightDropItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BCA94D9516503BB6049C2D /* FightDropItems.swift */; };
 		F80856243251596E9F2C5B61 /* KoreanInputResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACD3B2A7E95B1FABA04947 /* KoreanInputResources.swift */; };
 		DB5B7DB5A863508D9B82FDB2 /* InputDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635C5DA08725C409D747819 /* InputDraft.swift */; };
+		BEEDE5283979E53CEF1F943F /* OperatorGrowthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C06426851665C435E17AA7 /* OperatorGrowthSession.swift */; };
+		E76276C721245B7934D94CF0 /* OperatorGrowthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034CA435EE6EE55B57CAD963 /* OperatorGrowthData.swift */; };
+		5F3A7AC18D9F978D784B2D3F /* OperatorGrowthPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97890AC156C7169C506C9BC4 /* OperatorGrowthPlanner.swift */; };
 		A11CD557D59F5C2C8F50F857 /* KoreanOperatorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F47D5FE2115908A53B8A93 /* KoreanOperatorNames.swift */; };
 		9C9F23D47728563D9CA99904 /* KoreanOCRTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B197894FD2566E843DCEAD /* KoreanOCRTasks.swift */; };
 		E744C86377C45899893ED061 /* KoreanSamiNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AEB15B945B5720A2973C0C /* KoreanSamiNames.swift */; };
@@ -192,6 +196,7 @@
 		83264A3A29EC0F2E0074E33A /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		83264A3D29EC22DE0074E33A /* MAAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAAViewModel.swift; sourceTree = "<group>"; };
 		83264ACA29EC0F2E0074E33A /* EditableTextList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextList.swift; sourceTree = "<group>"; };
+		A2BB5F4F2349602B2961C3C0 /* OperatorGrowthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorGrowthView.swift; sourceTree = "<group>"; };
 		A6D36BE872CD50BE93157B47 /* KoreanOperatorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanOperatorField.swift; sourceTree = "<group>"; };
 		37FDCF738F7952FFAF3D78EB /* KoreanSamiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanSamiTextField.swift; sourceTree = "<group>"; };
 		832903A8302C9802008E1DC6 /* URL+contentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+contentType.swift"; sourceTree = "<group>"; };
@@ -245,6 +250,9 @@
 		E6BCA94D9516503BB6049C2D /* FightDropItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightDropItems.swift; sourceTree = "<group>"; };
 		4CACD3B2A7E95B1FABA04947 /* KoreanInputResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInputResources.swift; sourceTree = "<group>"; };
 		5635C5DA08725C409D747819 /* InputDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDraft.swift; sourceTree = "<group>"; };
+		71C06426851665C435E17AA7 /* OperatorGrowthSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorGrowthSession.swift; sourceTree = "<group>"; };
+		034CA435EE6EE55B57CAD963 /* OperatorGrowthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorGrowthData.swift; sourceTree = "<group>"; };
+		97890AC156C7169C506C9BC4 /* OperatorGrowthPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorGrowthPlanner.swift; sourceTree = "<group>"; };
 		F2F47D5FE2115908A53B8A93 /* KoreanOperatorNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanOperatorNames.swift; sourceTree = "<group>"; };
 		C5B197894FD2566E843DCEAD /* KoreanOCRTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanOCRTasks.swift; sourceTree = "<group>"; };
 		58AEB15B945B5720A2973C0C /* KoreanSamiNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanSamiNames.swift; sourceTree = "<group>"; };
@@ -375,6 +383,7 @@
 			children = (
 				83264A3A29EC0F2E0074E33A /* LogView.swift */,
 				83264ACA29EC0F2E0074E33A /* EditableTextList.swift */,
+				A2BB5F4F2349602B2961C3C0 /* OperatorGrowthView.swift */,
 				A6D36BE872CD50BE93157B47 /* KoreanOperatorField.swift */,
 				37FDCF738F7952FFAF3D78EB /* KoreanSamiTextField.swift */,
 				9BC2EEB22E3F188D0039C4DB /* MiniGameView.swift */,
@@ -517,6 +526,9 @@
 				E6BCA94D9516503BB6049C2D /* FightDropItems.swift */,
 				4CACD3B2A7E95B1FABA04947 /* KoreanInputResources.swift */,
 				5635C5DA08725C409D747819 /* InputDraft.swift */,
+				71C06426851665C435E17AA7 /* OperatorGrowthSession.swift */,
+				034CA435EE6EE55B57CAD963 /* OperatorGrowthData.swift */,
+				97890AC156C7169C506C9BC4 /* OperatorGrowthPlanner.swift */,
 				F2F47D5FE2115908A53B8A93 /* KoreanOperatorNames.swift */,
 				C5B197894FD2566E843DCEAD /* KoreanOCRTasks.swift */,
 				58AEB15B945B5720A2973C0C /* KoreanSamiNames.swift */,
@@ -672,6 +684,7 @@
 				832985AA29EE9958009F7ED5 /* RecruitView.swift in Sources */,
 				83264A3B29EC0F2E0074E33A /* LogView.swift in Sources */,
 				83264ACB29EC0F2E0074E33A /* EditableTextList.swift in Sources */,
+				49AE64D9E30CFBEB03218E80 /* OperatorGrowthView.swift in Sources */,
 				0E30FDE754235373B2C9244F /* KoreanOperatorField.swift in Sources */,
 				698C48B948955AF0A8FA670B /* KoreanSamiTextField.swift in Sources */,
 				83191C8D3040552100576DC0 /* MaaToolsView.swift in Sources */,
@@ -734,6 +747,9 @@
 				E151744A288755679AFDCCE5 /* FightDropItems.swift in Sources */,
 				F80856243251596E9F2C5B61 /* KoreanInputResources.swift in Sources */,
 				DB5B7DB5A863508D9B82FDB2 /* InputDraft.swift in Sources */,
+				BEEDE5283979E53CEF1F943F /* OperatorGrowthSession.swift in Sources */,
+				E76276C721245B7934D94CF0 /* OperatorGrowthData.swift in Sources */,
+				5F3A7AC18D9F978D784B2D3F /* OperatorGrowthPlanner.swift in Sources */,
 				A11CD557D59F5C2C8F50F857 /* KoreanOperatorNames.swift in Sources */,
 				9C9F23D47728563D9CA99904 /* KoreanOCRTasks.swift in Sources */,
 				E744C86377C45899893ED061 /* KoreanSamiNames.swift in Sources */,

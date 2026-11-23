@@ -14,6 +14,7 @@ struct StageActivityContext {
 
 extension StageActivityContext {
     func resourceCollectionStageIsOpen(at date: Date, in weekdays: [Int]?) -> Bool {
+        if activities?.resourceCollection?.contains(date) == true { return true }
         if let weekdays, !weekdays.contains(channel.calendar.weekday(for: date)) {
             return false
         }

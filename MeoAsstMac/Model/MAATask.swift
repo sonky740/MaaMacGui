@@ -66,6 +66,8 @@ extension MAATaskType: Codable, CustomStringConvertible {
             return String(localized: "生息演算")
         case .VideoRecognition:
             return String(localized: "视频识别")
+        case .OperProgress:
+            return "오퍼레이터 육성"
         case .OperBox:
             return String(localized: "干员识别")
         case .Custom:

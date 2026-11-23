@@ -40,6 +40,15 @@ extension FightStage {
 }
 
 extension FightStage {
+    static func openForGrowth(_ codes: Set<String>, at date: Date, in context: StageActivityContext) -> Set<String> {
+        Set(codes.filter { code in
+            let prefix = code.split(separator: "-").first
+            let supply = supplies.first { $0.code.split(separator: "-").first == prefix }
+            guard let stage = chips.first(where: { $0.code == code }) ?? supply else { return true }
+            return stage.isOpen(at: date, stageActivity: context)
+        })
+    }
+
     static func tips(for date: Date, stageActivity: StageActivityContext) -> [(code: String, drop: String)] {
         supplies.filter { $0.isOpen(at: date, stageActivity: stageActivity) }
             .map { ($0.code, $0.drop) }

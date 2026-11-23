@@ -28,6 +28,10 @@ import SwiftUI
     private var resourceLoad: Task<Void, Error>?
     private var resourceGeneration = 0
     private var handle: MAAHandle?
+    @Published private(set) var growthStatus = ""
+    private var growthTask: Task<Void, Never>?
+    private var growthHandle: MAAHandle?
+    var growthRunning: Bool { growthTask != nil }
     private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Core Callback
@@ -214,7 +218,11 @@ extension MAAViewModel {
         taskIDMap.removeAll()
         taskStatus.removeAll()
 
-        guard requireConnect else { return }
+        guard requireConnect, let handle else { return }
+        try await connect(handle)
+    }
+
+    private func connect(_ handle: MAAHandle) async throws {
 
         logTrace("ConnectingToEmulator")
         if touchMode == .MacPlayTools {
@@ -239,11 +247,17 @@ extension MAAViewModel {
             connectionProfile = "CompatMac"
         }
 
-        try await handle?.connect(adbPath: adbPath, address: connectionAddress, profile: connectionProfile)
+        try await handle.connect(adbPath: adbPath, address: connectionAddress, profile: connectionProfile)
         logTrace("Running")
     }
 
     func stop() async throws {
+        if let growthTask {
+            growthTask.cancel()
+            try await growthHandle?.stop()
+            await growthTask.value
+            return
+        }
         status = .pending
         defer { handleEarlyReturn(backTo: .busy) }
 
@@ -465,6 +479,7 @@ extension MAAViewModel {
 
 extension MAAViewModel {
     func tryStartTasks() async {
+        guard status == .idle else { return }
         do {
             logStore?.setDailyTasksDetailMode(.log)
             try await startTasks()
@@ -574,6 +589,48 @@ extension MAAViewModel {
 // MARK: Utility
 
 extension MAAViewModel {
+    func startGrowth(_ request: OperatorGrowthRequest) {
+        guard status == .idle, growthTask == nil, clientChannel == .YoStarKR else { return }
+        status = .busy
+        growthStatus = "육성 목표를 확인합니다."
+        growthTask = Task {
+            defer {
+                growthHandle = nil
+                growthTask = nil
+                status = .idle
+            }
+            do {
+                try await waitForInputResources()
+                let forms = KoreanOperatorNames.current.growthCandidates(request.name)
+                guard let form = forms.count == 1 ? forms.first : forms.first(where: { $0.id == request.formID }) else {
+                    throw GrowthError("대상 오퍼레이터와 분류를 확인하세요.")
+                }
+                let probe = try await MAAHandle(options: instanceOptions)
+                _ = try await probe.appendTask(type: .OperProgress, params: request.params(form: form))
+                let session = try await MAAHandle(options: instanceOptions)
+                growthHandle = session
+                try Task.checkCancellation()
+                try await connect(session)
+                try await OperatorGrowthSession.run(request, form: form, handle: session,
+                                                    stageActivity: .init(channel: clientChannel, activities: stageActivity)) { message in
+                    self.growthStatus = message
+                    self.logTrace(verbatim: message)
+                }
+                growthStatus = "육성 목표를 확인했습니다."
+            } catch {
+                if let growthHandle {
+                    do {
+                        try await growthHandle.stop()
+                    } catch {
+                        logTrace(verbatim: error.localizedDescription)
+                    }
+                }
+                growthStatus = Task.isCancelled ? "육성을 중지했습니다." : "육성 중단 · " + error.localizedDescription
+                logTrace(verbatim: growthStatus)
+            }
+        }
+    }
+
     func recognizeRecruit() async throws {
         status = .pending
         defer { handleEarlyReturn(backTo: .idle) }

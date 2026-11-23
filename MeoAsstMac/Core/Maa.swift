@@ -221,6 +221,7 @@ enum MAATaskType: String {
     case Reclamation
     case VideoRecognition
     case OperBox
+    case OperProgress
     case Custom
 }
 
@@ -283,6 +284,24 @@ extension MAAResourceVersion {
 
 struct MAAStageActivity: Decodable, Hashable {
     let miniGame: [MiniGame]
+    let resourceCollection: ResourceWindow?
+
+    struct ResourceWindow: Decodable, Hashable {
+        private let UtcStartTime: String?
+        private let UtcExpireTime: String?
+        private let TimeZone: Int?
+
+        func contains(_ date: Date) -> Bool {
+            guard let UtcStartTime, let UtcExpireTime,
+                  let zone = Foundation.TimeZone(secondsFromGMT: (TimeZone ?? 0) * 3600) else { return false }
+            let parser = DateFormatter()
+            parser.locale = Locale(identifier: "en_US_POSIX")
+            parser.timeZone = zone
+            parser.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            guard let start = parser.date(from: UtcStartTime), let end = parser.date(from: UtcExpireTime) else { return false }
+            return start <= date && date < end
+        }
+    }
 
     struct MiniGame: Decodable, Hashable {
         let Display: String?

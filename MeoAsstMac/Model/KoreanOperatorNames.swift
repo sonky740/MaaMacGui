@@ -8,6 +8,13 @@ struct KoreanOperatorNames {
         let branch: String
     }
 
+    struct GrowthCandidate: Identifiable, Hashable {
+        let id: String
+        let name: String
+        let role: String
+        let branch: String
+    }
+
     enum InputError: LocalizedError {
         case unavailable
         case unknown(String)
@@ -28,10 +35,12 @@ struct KoreanOperatorNames {
             let name_kr: String?
             let name_kr_unavailable: Bool?
             let subProfessionId: String?
+            let profession: String?
         }
         let chars: [String: Operator]
     }
 
+    private var growthByName = [String: [GrowthCandidate]]()
     private var coreNames = Set<String>()
     private var byCore = [String: Candidate]()
     private var byKorean = [String: [Candidate]]()
@@ -60,6 +69,10 @@ struct KoreanOperatorNames {
             guard !entry.name.isEmpty else { continue }
             names.coreNames.insert(entry.name)
             guard entry.name_kr_unavailable != true, let korean = entry.name_kr, !korean.isEmpty else { continue }
+            if let role = entry.profession {
+                let form = GrowthCandidate(id: id, name: entry.name, role: role.capitalized, branch: entry.subProfessionId ?? "")
+                for alias in Set([entry.name, korean]) { names.growthByName[alias, default: []].append(form) }
+            }
             let candidate = Candidate(core: entry.name, korean: korean, branch: entry.subProfessionId ?? "")
             if names.byCore[entry.name] == nil { names.byCore[entry.name] = candidate }
             if !names.byKorean[korean, default: []].contains(where: { $0.core == entry.name }) {
@@ -67,6 +80,25 @@ struct KoreanOperatorNames {
             }
         }
         return names
+    }
+
+    func suggestions(_ input: String) -> [Candidate] {
+        let query = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        let matches = byCore.values.filter {
+            query.isEmpty || $0.korean.localizedCaseInsensitiveContains(query) || $0.core.localizedCaseInsensitiveContains(query)
+        }
+        return matches.sorted { lhs, rhs in
+            if !query.isEmpty {
+                let left = lhs.korean.hasPrefix(query) || lhs.core.hasPrefix(query)
+                let right = rhs.korean.hasPrefix(query) || rhs.core.hasPrefix(query)
+                if left != right { return left }
+            }
+            return (lhs.korean, lhs.core) < (rhs.korean, rhs.core)
+        }
+    }
+
+    func growthCandidates(_ text: String) -> [GrowthCandidate] {
+        growthByName[text.trimmingCharacters(in: .whitespacesAndNewlines)] ?? []
     }
 
     func display(_ raw: String) -> String {

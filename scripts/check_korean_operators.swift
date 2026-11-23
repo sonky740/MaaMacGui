@@ -10,6 +10,11 @@ import Foundation
         let installed = URL(fileURLWithPath: path, isDirectory: true)
         KoreanInputResources.record(installed, base: true, reset: true, koreanServer: true)
         let names = KoreanOperatorNames.current
+        try check(names.suggestions("나란").contains { $0.korean == "나란투야" }, "partial Korean name")
+        try check(names.suggestions("트라고".decomposedStringWithCanonicalMapping).contains { $0.korean == "트라고디아" }, "Hangul input composition")
+        try check(names.suggestions("维什").contains { $0.korean == "위셔델" }, "core-name search")
+        try check(names.suggestions("명백히없는이름").isEmpty, "empty search result")
+        try check(names.suggestions("").contains { $0.korean == "켈시" }, "browse all")
         try check(names.display("维什戴尔") == "위셔델", "existing settings")
         try check(names.coreName("  위셔델\n", koreanUI: true) == "维什戴尔", "Korean input")
         try check(names.coreName("위셔델".decomposedStringWithCanonicalMapping, koreanUI: true) == "维什戴尔", "decomposed")
@@ -48,6 +53,7 @@ import Foundation
         KoreanInputResources.record(tmp, base: true, reset: false, koreanServer: true)
         let custom = KoreanOperatorNames.current
         try expectError(.ambiguous("새 이름")) { try custom.coreName("새 이름", koreanUI: true) }
+        try check(custom.suggestions("이름").count == 2 && custom.suggestions("").count == 2, "browse both names and exclude unavailable records")
         let matches = custom.candidates("새 이름")
         try check(matches.count == 2 && Set(matches.map(\.branch)).count == 2, "distinct candidates")
         for choice in matches {

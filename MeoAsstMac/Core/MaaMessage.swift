@@ -51,6 +51,7 @@ extension Decodable {
 
 extension MAAViewModel {
     func processMessage(_ message: MaaMessage) {
+        guard !growthRunning else { return }
         switch message.code {
         case .InternalError:
             // WPF retains this callback but currently performs no operation.
@@ -1545,9 +1546,9 @@ extension Int {
     /// 初始化失败
     fileprivate static let InitFailed = 1
     /// 连接相关信息
-    fileprivate static let ConnectionInfo = 2
+    static let ConnectionInfo = 2
     /// 全部任务完成
-    fileprivate static let AllTasksCompleted = 3
+    static let AllTasksCompleted = 3
     /// 外部异步调用信息
     fileprivate static let AsyncCallInfo = 4
     /// 实例已销毁
@@ -1556,26 +1557,26 @@ extension Int {
     /* TaskChain Info */
 
     /// 任务链执行/识别错误
-    fileprivate static let TaskChainError = 10000
+    static let TaskChainError = 10000
     /// 任务链开始
     fileprivate static let TaskChainStart = 10001
     /// 任务链完成
-    fileprivate static let TaskChainCompleted = 10002
+    static let TaskChainCompleted = 10002
     /// 任务链额外信息
     fileprivate static let TaskChainExtraInfo = 10003
     /// 任务链手动停止
-    fileprivate static let TaskChainStopped = 10004
+    static let TaskChainStopped = 10004
 
     /* SubTask Info */
 
     /// 原子任务执行/识别错误
-    fileprivate static let SubTaskError = 20000
+    static let SubTaskError = 20000
     /// 原子任务开始
-    fileprivate static let SubTaskStart = 20001
+    static let SubTaskStart = 20001
     /// 原子任务完成
     fileprivate static let SubTaskCompleted = 20002
     /// 原子任务额外信息
-    fileprivate static let SubTaskExtraInfo = 20003
+    static let SubTaskExtraInfo = 20003
     /// 原子任务手动停止
     fileprivate static let SubTaskStopped = 20004
 

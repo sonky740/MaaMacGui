@@ -95,11 +95,14 @@ enum UtilityEntry: Int, CaseIterable, Codable, Identifiable {
     case gacha
     case minigame
     case maatools
+    case operatorGrowth
 }
 
 extension UtilityEntry: CustomStringConvertible {
     var description: String {
         switch self {
+        case .operatorGrowth:
+            return "오퍼레이터 육성"
         case .recruit:
             return String(localized: "公招词条")
         case .depot:
@@ -119,6 +122,8 @@ extension UtilityEntry: CustomStringConvertible {
 
     var iconImage: String {
         switch self {
+        case .operatorGrowth:
+            return "chart.bar"
         case .recruit:
             return "person.text.rectangle"
         case .depot:
