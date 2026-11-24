@@ -1,6 +1,29 @@
 {
   "sourceLanguage": "zh-Hans",
   "strings": {
+    "游戏登录认证失败，已停止自动探索。": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Game login authentication failed. Automated exploration stopped."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "게임 로그인 인증 실패로 자동 탐색을 중단했습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "游戏登录认证失败，已停止自动探索。"
+          }
+        }
+      }
+    },
     "slower": {
       "extractionState": "manual",
       "localizations": {

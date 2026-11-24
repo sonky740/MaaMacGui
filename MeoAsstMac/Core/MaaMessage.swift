@@ -503,6 +503,9 @@ extension MAAViewModel {
         }
 
         switch info.subtask {
+        case "ProcessTask" where info.what == "RoguelikeAuthenticationFailed":
+            logError(verbatim: String(localized: "游戏登录认证失败，已停止自动探索。", table: "KoreanInputs"))
+
         case "StartGameTask":
             logError(.failedToOpenClient)
 
